@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background-color: #060912;
+  background-image: radial-gradient(ellipse 100% 80% at 50% -30%, rgba(67, 56, 202, 0.22), transparent 55%);
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.45);
+  color: #fff;
+}
+
+/* Animated ambient orbs */
+@keyframes app-bg-drift-a {
+  0% {
+    transform: translateX(-50%) translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translateX(-48%) translate(32px, 48px) scale(1.12);
+  }
+}
+
+@keyframes app-bg-drift-b {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(-36px, -28px) scale(1.08);
+  }
+}
+
+@keyframes app-bg-drift-c {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(24px, -20px) scale(1.06);
+  }
+}
+
+@keyframes app-bg-aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.app-bg-orb--a {
+  animation: app-bg-drift-a 22s ease-in-out infinite alternate;
+}
+
+.app-bg-orb--b {
+  animation: app-bg-drift-b 26s ease-in-out infinite alternate;
+}
+
+.app-bg-orb--c {
+  animation: app-bg-drift-c 20s ease-in-out infinite alternate;
+}
+
+.app-bg-aurora {
+  animation: app-bg-aurora 18s ease-in-out infinite;
+}
+
+@keyframes app-bg-conic-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app-bg-conic {
+  animation: app-bg-conic-spin 90s linear infinite;
+}
+
+@keyframes app-bg-twinkle {
+  0%,
+  100% {
+    opacity: 0.42;
+  }
+  50% {
+    opacity: 0.62;
+  }
+}
+
+.app-bg-stars {
+  animation: app-bg-twinkle 8s ease-in-out infinite;
+}
+
+/* Subtle film grain (SVG data URL) */
+.app-bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-bg-orb--a,
+  .app-bg-orb--b,
+  .app-bg-orb--c,
+  .app-bg-aurora,
+  .app-bg-conic,
+  .app-bg-stars {
+    animation: none;
+  }
+
+  .app-bg-stars {
+    opacity: 0.48;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "mini-social-app",
+  "private": true,
+  "version": "1.0.0",
+  "description": "MERN mini social — run server + client together",
+  "scripts": {
+    "postinstall": "npm install --prefix server && npm install --prefix client",
+    
+    "start": "concurrently -n server,client -c blue,magenta \"npm start --prefix server\" \"npm start --prefix client\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
